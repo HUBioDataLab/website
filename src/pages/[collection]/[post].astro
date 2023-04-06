@@ -1,0 +1,35 @@
+---
+// Layout imports
+import Content from '@components/Content/Content.astro';
+import MainLayout from '@layouts/MainLayout.astro';
+import { allCollections } from '@scripts/collection-utils';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths () {
+
+    const allPosts = (await Promise.all(
+        allCollections.map(async (collection: string) => {
+            const somePosts = await getCollection(collection, ({ slug, data }) => {
+                return slug != "index" && !data.draft;
+            })
+        return somePosts;
+        })
+    )).flat(Infinity);
+
+    return allPosts.map((post) => {
+        let { collection, slug } = post;
+        return {
+            params: {collection: collection, post: slug},
+            props: {post: post}
+        }
+    })
+}
+
+const { post } = Astro.props;
+const { data } = post;
+console.log(data.title);
+---
+
+<MainLayout title={ data.title } description={ data.description }>
+    <Content toRender={ post }/>
+</MainLayout>

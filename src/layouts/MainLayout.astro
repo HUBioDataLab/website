@@ -1,0 +1,38 @@
+---
+// Style import
+import '@styles/global.scss';
+
+// Component imports
+import Head from '@components/Head/Head.astro';
+import Header from '@components/Navbar/Navbar.astro';
+import Footer from '@components/Footer/Footer.astro';
+
+// Variable handling
+import { SITE_TITLE } from "@data/site-data";
+
+export interface Props {
+    title?:         string;
+    description?:   string;
+}
+
+const { title = SITE_TITLE, description = 'Change me' } = Astro.props as Props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <Head title={ title } description={ description }/>
+    
+    <body>
+        <!-- * Accessibility anchor to jump to main content -->
+        <!-- <a href="#content">main</a> -->
+
+        <Header />
+        <main>
+            <slot>
+                Oops, looks like this page is empty for now.
+            </slot>
+        </main>
+        <Footer />
+	</body>
+</html>

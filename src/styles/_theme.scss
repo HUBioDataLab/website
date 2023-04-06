@@ -1,0 +1,21 @@
+@use "catppuccin-mocha" as dark;
+@use "catppuccin-latte" as light;
+
+:root {
+    @each $color-name, $color-code in light.$colors {
+        --#{$color-name}: #{$color-code};
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        @each $color-name, $color-code in dark.$colors {
+            --#{$color-name}: #{$color-code};
+        }
+    }
+}
+
+:root {
+    --fg: var(--text);
+    --bg: var(--crust);
+}

@@ -1,0 +1,43 @@
+---
+// Layout imports
+import PageList from '@components/PageList.astro';
+import MainLayout from '@layouts/MainLayout.astro';
+import { allCollections, sortedPosts } from '@scripts/collection-utils';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths () {
+
+    const allPosts = sortedPosts((await Promise.all(
+        allCollections.map(async (collection: string) => {
+            const somePosts = await getCollection(collection, ({ slug, data }) => {
+                return slug != "index" && !data.draft;
+            })
+        return somePosts;
+        })
+    )).flat(Infinity))
+
+    const uniqueTags = [...new Set((allPosts.map((post) => {
+        const { data } = post;
+        return data.tags;
+    })).flat(Infinity))];
+
+    return uniqueTags.map((tag) => {
+        const filteredPosts = allPosts.filter((post) => {
+            const { data } = post;
+            return data.tags.includes(tag)
+        });
+        return {
+            params: { tag },
+            props: { tag: tag, posts: filteredPosts },
+        };
+    });
+}
+
+const { tag, posts } = Astro.props;
+
+---
+
+<MainLayout title={ tag } description={ tag }>
+    <h1> { tag } <span class="primary">tagged posts</span> </h1>
+    <PageList pages={ posts }/>
+</MainLayout>

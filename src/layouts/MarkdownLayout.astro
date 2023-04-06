@@ -1,0 +1,14 @@
+---
+// Layout imports
+import MainLayout from '@layouts/MainLayout.astro';
+
+const { frontmatter } = Astro.props;
+---
+
+<MainLayout title={ frontmatter.title } description={ frontmatter.description }>
+    <h1>{ frontmatter.title }</h1>
+    <hr />
+    <slot>
+        An empty markdown
+    </slot>
+</MainLayout>

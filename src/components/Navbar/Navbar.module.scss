@@ -1,0 +1,29 @@
+@use '/src/styles/theme';
+
+header {
+
+    a {
+
+        &.title {
+            float: left;
+        }
+
+        &.nav-link {
+            float: right;
+            margin-left: 1rem;
+        }
+
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    top: 0;
+
+    width: 60%;
+    padding: 1rem 0px;
+    margin: 1rem auto;
+}
