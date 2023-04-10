@@ -1,3 +1,7 @@
+/**
+ * Theme defaults
+ */
+
 $light: (
     "base": #faf4ed,
     "surface": #fffaf3,
@@ -35,6 +39,10 @@ $dark: (
     "highlight-high": #524f67,
 );
 
+/**
+ * Conversion to css variables
+ * to better handle situational changes
+ */
 
 :root {
     @each $color-name, $color-code in $light {
@@ -51,6 +59,10 @@ $dark: (
     }
 }
 
+/**
+ * Apply theme to page
+ * Profit
+ */
 
 body {
     background-color: var(--base);
