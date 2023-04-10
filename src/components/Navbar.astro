@@ -1,6 +1,4 @@
 ---
-import CSS from "./Navbar.module.scss";
-
 import { SITE_TITLE } from "@data/site-data";
 import { allCollections } from "@scripts/collection-utils";
 ---
@@ -10,7 +8,7 @@ import { allCollections } from "@scripts/collection-utils";
 
     {
         allCollections.map((collection) => {
-            return <a href={ `${ Astro.site }${collection}/` } class:list={[ CSS['nav-link'] ]}>{ collection }</a>;
+            return <a href={ `${ Astro.site }${collection}/` } class="nav-link">{ collection }</a>;
         })
     }
 

@@ -1,6 +1,4 @@
 ---
-import CSS from "./Tags.module.scss"
-
 import { Icon } from "astro-icon";
 
 export interface Props {
@@ -10,7 +8,7 @@ export interface Props {
 const { tags } = Astro.props;
 ---
 
-<div class:list={[ CSS['tag-container'] ]}>
+<div class:list="tag-container">
     <Icon name="ion:pricetags-outline" />
     {
         tags.map((tag) => {

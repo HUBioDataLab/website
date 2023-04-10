@@ -1,21 +1,58 @@
-@use "catppuccin-mocha" as dark;
-@use "catppuccin-latte" as light;
+$light: (
+    "base": #faf4ed,
+    "surface": #fffaf3,
+    "overlay": #f2e9e1,
+    "muted": #9893a5,
+    "subtle": #797593,
+    "text": #575279,
+    "love": #b4637a,
+    "gold": #ea9d34,
+    "rose": #d7827e,
+    "pine": #286983,
+    "foam": #56949f,
+    "iris": #907aa9,
+    "highlight-low": #f4ede8,
+    "highlight-med": #dfdad9,
+    "highlight-high": #cecacd,
+);
+
+
+$dark: (
+    "base": #191724,
+    "surface": #1f1d2e,
+    "overlay": #26233a,
+    "muted": #6e6a86,
+    "subtle": #908caa,
+    "text": #e0def4,
+    "love": #eb6f92,
+    "gold": #f6c177,
+    "rose": #ebbcba,
+    "pine": #31748f,
+    "foam": #9ccfd8,
+    "iris": #c4a7e7,
+    "highlight-low": #21202e,
+    "highlight-med": #403d52,
+    "highlight-high": #524f67,
+);
+
 
 :root {
-    @each $color-name, $color-code in light.$colors {
+    @each $color-name, $color-code in $light {
         --#{$color-name}: #{$color-code};
     }
 }
 
+
 @media (prefers-color-scheme: dark) {
     :root {
-        @each $color-name, $color-code in dark.$colors {
+        @each $color-name, $color-code in $dark {
             --#{$color-name}: #{$color-code};
         }
     }
 }
 
-:root {
-    --fg: var(--text);
-    --bg: var(--crust);
+
+body {
+    background-color: var(--base);
+    color: var(--text);
 }
