@@ -68,3 +68,49 @@ body {
     background-color: var(--base);
     color: var(--text);
 }
+
+h1 {
+    color: var(--iris);
+    &::before {
+        content: "# ";
+    }
+}
+
+h2 {
+    color: var(--foam);
+    &::before {
+        content: "## ";
+    }
+}
+
+h3 {
+    color: var(--rose);
+    &::before {
+        content: "### ";
+    }
+}
+
+h4 {
+    color: var(--gold);
+    &::before {
+        content: "#### ";
+    }
+}
+
+h5 {
+    color: var(--pine);
+    &::before {
+        content: "##### ";
+    }
+}
+
+h6 {
+    color: var(--foam);
+    &::before {
+        content: "###### ";
+    }
+}
+
+a {
+    color: var(--iris);
+}
