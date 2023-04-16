@@ -1,0 +1,35 @@
+---
+// Layout imports
+import Content from '@components/Content.astro';
+import MainLayout from '@layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths () {
+
+    const pagesCollection = await getCollection('pages');
+
+    return pagesCollection.map((page) => {
+        let { slug } = page;
+
+        if (slug === "index") {
+            return {
+                params: {slug: "."},
+                props: {page: page}
+            }
+        }
+
+        return {
+            params: {slug: slug},
+            props: {page: page}
+        }
+    })
+}
+
+const { page } = Astro.props;
+const { data } = page;
+console.log(data.title);
+---
+
+<MainLayout title={ data.title } description={ data.description }>
+    <Content toRender={ page }/>
+</MainLayout>

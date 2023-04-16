@@ -1,0 +1,25 @@
+---
+export interface Props {
+    isIndex?: boolean,
+    toRender: any
+}
+
+const { isIndex = false, toRender } = Astro.props as Props;
+---
+
+{
+    async () => {
+        if (toRender !== undefined) {
+
+            const { data } = toRender;
+            const { Content } = await toRender.render();
+
+            return (
+            <>
+              { isIndex ? <h1>{ data.title }<span class="primary"> posts</span></h1> : <h1>{ data.title }</h1> }
+              <Content />
+            </>
+            )
+        }
+    }
+}
