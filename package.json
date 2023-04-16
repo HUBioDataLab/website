@@ -16,12 +16,12 @@
 		"@astrojs/sitemap": "^1.0.1",
 		"astro": "^2.1.2",
 		"astro-icon": "^0.8.0",
+		"astro-pagefind": "^1.1.0",
 		"astro-robots-txt": "^0.3.12",
-		"sass": "^1.58.0",
-		"pagefind": "^0.12.0"
+		"sass": "^1.58.0"
 	},
 	"devDependencies": {
-		"public": "^0.1.5",
-		"hygen": "^6.2.11"
+		"hygen": "^6.2.11",
+		"public": "^0.1.5"
 	}
 }
