@@ -1,0 +1,33 @@
+---
+import { literal } from 'astro/zod';
+
+export interface Props {
+    projectPage: any,
+    currentContributors: any
+};
+
+const { projectPage, currentContributors } = Astro.props as Props;
+---
+
+{
+    async () => {
+        if (projectPage !== undefined) {
+
+            const { data } = projectPage;
+            const { Content } = await projectPage.render();
+
+            return (
+                <h1>{ data.name }</h1>
+                <h2>Contributors</h2>
+                <ul>
+                {
+                    currentContributors.map((contributor) => {
+                        return <li>{contributor}</li>
+                    })
+                }
+                </ul>
+                <Content />
+            )
+        }
+    }
+}
