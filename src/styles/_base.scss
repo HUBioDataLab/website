@@ -1,0 +1,69 @@
+
+:root {
+    font-size: x-large;
+}
+
+body {
+    line-height: 1.25rem;
+    margin: auto;
+    width: 80%;
+}
+
+main {
+    margin: 2rem 0rem;
+}
+
+header {
+    margin: 1rem 0rem;
+    width: 100%;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.17rem;
+}
+
+h4 {
+    font-size: 1rem;
+}
+
+h5 {
+    font-size: 0.83rem;
+}
+
+h6 {
+    font-size: 0.67rem;
+}
+
+@for $i from 1 through 6 {
+    h#{$i} {
+        border-bottom: 0.1rem solid;
+        margin: 1.5rem 0rem;
+        padding: 0rem 0rem 1rem 0rem;
+    }
+}
+
+p {
+    margin: 1rem 0rem;
+    text-indent: 1rem;
+}
+
+footer {
+    margin: 1rem 0rem;
+    text-align: center;
+}
+
+pre {
+    &.astro-code {
+        border: 0.1rem dashed var(--rose);
+        margin: 1rem 0rem;
+        padding: 1rem;
+    }
+}
