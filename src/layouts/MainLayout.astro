@@ -28,10 +28,8 @@ const { title = SITE_TITLE, description = 'Change me' } = Astro.props as Props;
         <!-- <a href="#content">main</a> -->
 
         <Header />
-        <main>
-            <slot>
-                Oops, looks like this page is empty for now.
-            </slot>
+        <main data-pagefind-body>
+            <slot />
         </main>
         <Footer />
 	</body>
