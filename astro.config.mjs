@@ -9,13 +9,13 @@ import robotsTxt from "astro-robots-txt";
 // https://astro.build/config
 import sitemap from "@astrojs/sitemap";
 
-// Shiki syntax-highlighting theme
-import catppuccin_mocha from "./src/themes/catppuccin-mocha.json";
+// https://github.com/shishkin/astro-pagefind
+import pagefind from 'astro-pagefind';
 
 // https://astro.build/config
 export default defineConfig({
   site: "http://localhost:3000/",
-  integrations: [mdx(), robotsTxt(), sitemap()],
+  integrations: [mdx(), robotsTxt(), sitemap(), pagefind()],
   markdown: {
     shikiConfig: {
       // https://github.com/shikijs/shiki/blob/main/docs/themes.md
