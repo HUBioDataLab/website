@@ -1,0 +1,37 @@
+---
+// Layout imports
+import MemberRenderer from "@components/MemberRenderer.astro";
+import Content from "@components/MemberRenderer.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const membersCollection = await getCollection("members");
+
+    return membersCollection.map((member) => {
+        let { slug } = member;
+
+        return {
+            params: { slug: slug },
+            props: { member: member },
+        };
+    });
+}
+
+const { member } = Astro.props;
+const { data } = member;
+
+const projectCollection = await getCollection("projects");
+
+const currentProjects = projectCollection
+    .filter((project) => {
+        return data.current_projects.has(project.slug);
+    })
+    .map((project) => {
+        return project.data.name;
+    });
+---
+
+<MainLayout title={data.title} description={data.description}>
+    <MemberRenderer memberPage={member} currentProjects={currentProjects}/>
+</MainLayout>

@@ -1,0 +1,31 @@
+---
+export interface Props {
+    memberPage: any,
+    currentProjects: any
+};
+
+const { memberPage, currentProjects } = Astro.props as Props;
+---
+
+{
+    async () => {
+        if (memberPage !== undefined) {
+
+        const { data } = memberPage;
+        const { Content } = await memberPage.render();
+
+        return (
+            <h1>{ data.name } { data.surname }</h1>
+            <h2>Contributes to</h2>
+            <ul>
+                {
+                    currentProjects.map((project) => {
+                        return <li>{ project }</li>
+                    })
+                }
+            </ul>
+            <Content />
+        )
+        }
+    }
+}
