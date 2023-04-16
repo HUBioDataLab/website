@@ -19,11 +19,11 @@ export default defineConfig({
   markdown: {
     shikiConfig: {
       // https://github.com/shikijs/shiki/blob/main/docs/themes.md
-      theme: catppuccin_mocha,
+      theme: 'rose-pine-moon',
       // Add custom languages
       // Note: Shiki has countless langs built-in, including .astro!
       // https://github.com/shikijs/shiki/blob/main/docs/languages.md
-      langs: ['python'],
+      // langs: ['python'], Not needed for now
       // Enable word wrap to prevent horizontal scrolling
       wrap: true,
     },
