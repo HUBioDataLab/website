@@ -27,7 +27,7 @@ const currentProjects = projectCollection
         return data.current_projects.has(project.slug);
     })
     .map((project) => {
-        return project.data.name;
+        return project.data.title;
     });
 ---
 
