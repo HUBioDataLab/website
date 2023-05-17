@@ -1,0 +1,10 @@
+header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+
+    a {
+        text-decoration: none;
+        border-bottom: 0.1rem solid;
+    }
+}
