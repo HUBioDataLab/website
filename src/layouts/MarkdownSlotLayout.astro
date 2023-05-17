@@ -1,0 +1,16 @@
+---
+import MainLayout from "@layouts/MainLayout.astro";
+
+export interface Props {
+    frontmatter;
+}
+
+const { frontmatter } = Astro.props as Props;
+---
+
+<MainLayout>
+    <h1>{frontmatter.title}</h1>
+    <slot>
+        This page seems to be empty. For now at least.
+    </slot>
+</MainLayout>
