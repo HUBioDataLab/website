@@ -1,25 +1,38 @@
 ---
-import MarkdownLayout from '@layouts/MarkdownLayout.astro';
+import MarkdownLayout from "@layouts/MarkdownLayout.astro";
 
 export interface Props {
-    projectPage: any,
-    currentContributors: any
-};
+    projectPage: any;
+    currentContributors: any;
+    relatedPublications: any;
+}
 
-const { projectPage, currentContributors } = Astro.props as Props;
+const { projectPage, currentContributors, relatedPublications } =
+    Astro.props as Props;
+
 const { data } = projectPage;
 ---
 
-<MarkdownLayout page={ projectPage }>
-    
-    <h1>{ data.name }</h1>
+<MarkdownLayout page={projectPage}>
+    <h1>{data.title}</h1>
+    {
+
+        data.image && <img src={ data.image } alt="" width="25%">
+    }
     <h2>Contributors</h2>
     <ul>
-    {
-        currentContributors.map((contributor: string) => {
-            return <li>{contributor}</li>
-        })
-    }
+        {
+            currentContributors.map((contributor: string) => {
+                return <li>{contributor}</li>;
+            })
+        }
     </ul>
-
+    <h2>Related Publications</h2>
+    <ul>
+        {
+            relatedPublications.map((publication: string) => {
+                return <li>{publication}</li>;
+            })
+        }
+    </ul>
 </MarkdownLayout>
