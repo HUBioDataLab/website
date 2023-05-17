@@ -27,7 +27,17 @@ const currentContributors = memberCollection
         return member.data.current_projects.has(slug);
     })
     .map((member) => {
-        return member.data.name + " " + member.data.surname;
+        return member.data.title;
+    });
+
+const publicationsCollection = await getCollection("publications");
+
+const relatedPublications = publicationsCollection
+    .filter((publication) => {
+        return publication.data.project == slug;
+    })
+    .map((publication) => {
+        return publication.data.title;
     });
 ---
 
@@ -35,5 +45,6 @@ const currentContributors = memberCollection
     <ProjectRenderer
         projectPage={project}
         currentContributors={currentContributors}
+        relatedPublications={relatedPublications}
     />
 </MainLayout>

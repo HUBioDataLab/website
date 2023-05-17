@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import CardList from "@components/CardList.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+const projectsCollection = await getCollection("projects");
+---
+
+<MainLayout>
+    <h1>Projects at lab</h1>
+    <p>
+        Can we stop and get some projects <br/>
+        Mom: We have projects at lab <br/>
+        Projects at lab:
+    </p>
+
+    <CardList pages={ projectsCollection.filter((project) => {
+        return !project.data.draft
+    }) }/>
+</MainLayout>
