@@ -1,15 +1,16 @@
 ---
-import { SITE_TITLE } from "@data/site-data";
 import { allCollections } from "@scripts/collection-utils";
 ---
 
 <header>
-    <a href={ Astro.site } class="title" >{SITE_TITLE}</a>
-
+    <a href="/">home</a>
     {
-        allCollections.map((collection) => {
-            return <a href={ `${ Astro.site }${collection}/` } class="nav-link">{ collection }</a>;
+        allCollections
+        .filter((collection) => {
+            return collection !== 'pages';
+        })
+        .map((collection) => {
+            return <a href={ `/${collection}/` }>{ collection }</a>;
         })
     }
-
 </header>
