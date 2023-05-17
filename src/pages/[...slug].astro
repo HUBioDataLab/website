@@ -13,7 +13,7 @@ export async function getStaticPaths () {
 
         if (slug === "index") {
             return {
-                params: {slug: "."},
+                params: {slug: undefined},
                 props: {page: page}
             }
         }
