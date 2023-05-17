@@ -1,31 +1,26 @@
 ---
+import MarkdownLayout from '@layouts/MarkdownLayout.astro';
+
 export interface Props {
     memberPage: any,
     currentProjects: any
 };
 
 const { memberPage, currentProjects } = Astro.props as Props;
+const { data } = memberPage;
 ---
 
-{
-    async () => {
-        if (memberPage !== undefined) {
+<MarkdownLayout page={ memberPage }>
 
-        const { data } = memberPage;
-        const { Content } = await memberPage.render();
-
-        return (
-            <h1>{ data.name } { data.surname }</h1>
-            <h2>Contributes to</h2>
-            <ul>
-                {
-                    currentProjects.map((project) => {
-                        return <li>{ project }</li>
-                    })
-                }
-            </ul>
-            <Content />
-        )
+    <h1>{ data.name } { data.surname }</h1>
+    <h2>Contributes to</h2>
+    <ul>
+        {
+            currentProjects.map((project) => {
+                return <li>{ project }</li>
+            })
         }
-    }
-}
+    </ul>
+
+</MarkdownLayout>
+

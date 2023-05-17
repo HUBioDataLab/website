@@ -1,25 +1,14 @@
 ---
-export interface Props {
-    isIndex?: boolean,
-    toRender: any
-}
+import MarkdownLayout from '@layouts/MarkdownLayout.astro';
 
-const { isIndex = false, toRender } = Astro.props as Props;
+export interface Props {
+    pagePage: any,
+};
+
+const { pagePage } = Astro.props as Props;
+const { data } = pagePage;
 ---
 
-{
-    async () => {
-        if (toRender !== undefined) {
-
-            const { data } = toRender;
-            const { Content } = await toRender.render();
-
-            return (
-            <>
-              { isIndex ? <h1>{ data.title }<span class="primary"> posts</span></h1> : <h1>{ data.title }</h1> }
-              <Content />
-            </>
-            )
-        }
-    }
-}
+<MarkdownLayout page={ pagePage }>
+    <h1>{ data.title }</h1>
+</MarkdownLayout>

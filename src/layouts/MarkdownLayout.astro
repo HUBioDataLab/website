@@ -1,11 +1,21 @@
 ---
-// Layout imports
-import MainLayout from '@layouts/MainLayout.astro';
+export interface Props {
+    page: any,
+};
 
-const { frontmatter } = Astro.props;
+const { page } = Astro.props as Props;
 ---
 
-<MainLayout title={ frontmatter.title } description={ frontmatter.description }>
-    <h1>{ frontmatter.title }</h1>
-    <slot />
-</MainLayout>
+{
+    async () => {
+        if (page !== undefined) {
+
+        const { Content } = await page.render();
+
+        return (
+            <slot/>
+            <Content />
+        )
+        }
+    }
+}

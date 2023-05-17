@@ -1,5 +1,5 @@
 ---
-import { literal } from 'astro/zod';
+import MarkdownLayout from '@layouts/MarkdownLayout.astro';
 
 export interface Props {
     projectPage: any,
@@ -7,27 +7,19 @@ export interface Props {
 };
 
 const { projectPage, currentContributors } = Astro.props as Props;
+const { data } = projectPage;
 ---
 
-{
-    async () => {
-        if (projectPage !== undefined) {
-
-            const { data } = projectPage;
-            const { Content } = await projectPage.render();
-
-            return (
-                <h1>{ data.name }</h1>
-                <h2>Contributors</h2>
-                <ul>
-                {
-                    currentContributors.map((contributor) => {
-                        return <li>{contributor}</li>
-                    })
-                }
-                </ul>
-                <Content />
-            )
-        }
+<MarkdownLayout page={ projectPage }>
+    
+    <h1>{ data.name }</h1>
+    <h2>Contributors</h2>
+    <ul>
+    {
+        currentContributors.map((contributor: string) => {
+            return <li>{contributor}</li>
+        })
     }
-}
+    </ul>
+
+</MarkdownLayout>
