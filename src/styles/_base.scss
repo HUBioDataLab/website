@@ -1,6 +1,6 @@
 
 :root {
-    font-size: x-large;
+    font-size: larger;
 }
 
 body {
@@ -18,41 +18,25 @@ header {
     width: 100%;
 }
 
-h1 {
-    font-size: 2rem;
-}
-
-h2 {
-    font-size: 1.5rem;
-}
-
-h3 {
-    font-size: 1.17rem;
-}
-
-h4 {
-    font-size: 1rem;
-}
-
-h5 {
-    font-size: 0.83rem;
-}
-
-h6 {
-    font-size: 0.67rem;
-}
+$heading-font-sizes: (2rem, 1.5rem, 1.17rem, 1rem, 0.83rem, 0.67rem);
 
 @for $i from 1 through 6 {
     h#{$i} {
         border-bottom: 0.1rem solid;
+        font-size: nth($list: $heading-font-sizes, $n: $i);
+        font-weight: 900-(100 * (1 - $i));
         margin: 1.5rem 0rem;
         padding: 0rem 0rem 1rem 0rem;
+
+        a {
+            color: inherit;
+        }
     }
 }
 
 p {
     margin: 1rem 0rem;
-    text-indent: 1rem;
+    // text-indent: 2rem;
 }
 
 footer {
@@ -65,5 +49,12 @@ pre {
         border: 0.1rem dashed var(--rose);
         margin: 1rem 0rem;
         padding: 1rem;
+    }
+}
+
+a {
+    &:hover {
+        color: var(--gold);
+        transition: ease-in-out 0.1s;
     }
 }
