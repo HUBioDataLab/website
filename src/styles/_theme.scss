@@ -1,8 +1,8 @@
-/**
+/*
  * Theme defaults
  */
 
-$light: (
+ $light: (
     "base": #faf4ed,
     "surface": #fffaf3,
     "overlay": #f2e9e1,
@@ -39,7 +39,7 @@ $dark: (
     "highlight-high": #524f67,
 );
 
-/**
+/*
  * Conversion to css variables
  * to better handle situational changes
  */
@@ -59,7 +59,16 @@ $dark: (
     }
 }
 
-/**
+/*
+ * Color classes
+ */
+@each $color-name, $color-code in $light {
+    .#{$color-name} {
+        color: var(--#{$color-name});
+    }
+}
+
+/*
  * Apply theme to page
  * Profit
  */
@@ -69,48 +78,40 @@ body {
     color: var(--text);
 }
 
-h1 {
-    color: var(--iris);
-    &::before {
-        content: "# ";
-    }
-}
+/*
+ * Heading
+ */
 
-h2 {
-    color: var(--foam);
-    &::before {
-        content: "## ";
-    }
-}
+ $heading-colors: (
+    var(--iris),
+    var(--foam),
+    var(--rose),
+    var(--gold),
+    var(--pine),
+    var(--foam)
+);
 
-h3 {
-    color: var(--rose);
-    &::before {
-        content: "### ";
-    }
-}
+$heading-before-content: "###### ";
 
-h4 {
-    color: var(--gold);
-    &::before {
-        content: "#### ";
-    }
-}
+@for $i from 1 through 6 {
+    $len: str-length($heading-before-content);
 
-h5 {
-    color: var(--pine);
-    &::before {
-        content: "##### ";
-    }
-}
-
-h6 {
-    color: var(--foam);
-    &::before {
-        content: "###### ";
+    h#{$i} {
+        color: nth($heading-colors, $i);
+        &::before {
+            content: str-slice(
+                $heading-before-content,
+                $start-at: $len - $i,
+                $end-at: $len
+            );
+        }
     }
 }
 
 a {
     color: var(--iris);
+}
+
+blockquote {
+    background-color: var(--overlay);
 }
