@@ -1,0 +1,28 @@
+---
+// Layout imports
+import publicationRenderer from "@components/publicationRenderer.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const publicationsCollection = await getCollection("publications");
+
+    return publicationsCollection.map((publication) => {
+        let { slug } = publication;
+
+        return {
+            params: { slug: slug },
+            props: { publication: publication },
+        };
+    });
+}
+
+const { publication } = Astro.props;
+const { slug, data } = publication;
+---
+
+<MainLayout title={data.title} description={data.description}>
+    <PublicationRenderer
+        publicationPage={publication}
+    />
+</MainLayout>

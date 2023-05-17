@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import CardList from "@components/CardList.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+const publicationsCollection = await getCollection("publications");
+---
+
+<MainLayout>
+    <h1>Publications at lab</h1>
+    <p>
+        Can we stop and get some publications <br/>
+        Mom: We have publications at lab <br/>
+        publications at lab:
+    </p>
+
+    <CardList pages={ publicationsCollection.filter((publication) => {
+        return !publication.data.draft
+    }) }/>
+</MainLayout>
