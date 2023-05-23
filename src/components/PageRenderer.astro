@@ -11,4 +11,8 @@ const { data } = pagePage;
 
 <MarkdownLayout page={ pagePage }>
     <h1>{ data.title }</h1>
+
+    {
+        data.image && <img src={ data.image } alt="" width="25%">
+    }
 </MarkdownLayout>
