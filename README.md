@@ -52,7 +52,7 @@ Any static assets, like images, should be placed in the `public/` directory.
 
 You will mostly deal with `content/` folder.
 
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
