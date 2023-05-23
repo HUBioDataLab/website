@@ -1,7 +1,6 @@
 # Website Documentation
 
 ## First install
-
 Clone repo and install dependencies:
 ```
 git clone https://github.com/HUBioDataLab/website.git
@@ -10,7 +9,9 @@ npm install
 ```
 
 ## Developing the website
-You can test the website with the following command. If everything is okay, send a PR and describe what you did in detail.
+If you wish to participate in development, it's important to first fork this repo.
+And then you can switch to a new branch where you do the development.
+You can test the website with the following command. If everything is okay, send a PR to the main branch and describe what you did in detail.
 ```
 npm run dev
 ```
